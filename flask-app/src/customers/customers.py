@@ -3,7 +3,6 @@ import json
 from src import db
 from datetime import datetime
 
-
 customers = Blueprint('customers', __name__)
 
 # Get all customers from the DB
@@ -42,13 +41,19 @@ def get_customer(userID):
     return the_response
 
 @customers.route('/customers', methods=['POST'])
-def add_customers():
+def add_customer():
     cursor = db.get_db().cursor()
 
     cust_info = request.json
 
 
+    cust_tuple = f"('{cust_info.get('CusFirstName', 'NULL')}', '{cust_info.get('CusLastName')}', '{cust_info.get('CusPhone')}', '{cust_info.get('CusEmail')}', '{cust_info.get('CusDOB')[:10]}', \
+        '{cust_info.get('CusStreet')}', '{cust_info.get('CustCity')}', '{cust_info.get('CustState')}', '{cust_info.get('CustZipcode')}', '{cust_info.get('CustCountry')}')"
+    
+    query = f"INSERT INTO Customers (FirstName, LastName, PhoneNumber, Email, DOB, Street, City, State, ZipCode, Country) VALUES {cust_tuple}"
 
-    query = "INSERT INTO Customers (FirstName, LastName, PhoneNumber, Email, DOB, Street, City, State, ZipCode, Country)"
+    cursor.execute(query)
 
-    return
+    db.get_db().commit()
+
+    return "Successfully added user into database."
