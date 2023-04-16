@@ -65,3 +65,25 @@ def get_venue_owners():
 
 
     return the_response
+
+# Get All Venue Owner
+@venue_owner.route('/venue_owner/name', methods=['GET'])
+def get_venue_owner_names():
+    cursor = db.get_db().cursor()
+
+    query = "SELECT CONCAT(FirstName, ' ', LastName) as label, OwnerID as value FROM VenueOwner"
+
+    cursor.execute(query)
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+
+
+    return the_response
