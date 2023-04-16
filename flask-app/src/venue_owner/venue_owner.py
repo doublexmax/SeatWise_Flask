@@ -84,6 +84,6 @@ def get_venue_owner_names():
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
 
-
+    db.get_db().commit()
 
     return the_response
