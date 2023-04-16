@@ -71,7 +71,8 @@ def get_revenueo(VenueID):
 def delete_venue(VenueID):
     cursor = db.get_db().cursor()
 
-    query = f"DELETE FROM Venues Where VenueID = %s"
+    query = f"UPDATE Venues SET PhoneNumber = NULL, Email = NULL, Street = NULL, City = NULL, \
+        State = NULL, Zipcode = NULL, Country = NULL,OwnerID = NULL WHERE VenueID = %s"
 
     cursor.execute(query, (VenueID,))
 
