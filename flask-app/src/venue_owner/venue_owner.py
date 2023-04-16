@@ -9,7 +9,7 @@ from datetime import datetime
 venue_owner = Blueprint('venue_owners', __name__)
 
 # Return all venue's a venue owner owns
-@venue_owner.route('/venues/<VenueOwnerID>')
+@venue_owner.route('/venues/<VenueOwnerID>', methods=['GET'])
 def get_owner_venues(VenueOwnerID):
     cursor = db.get_db().cursor()
 
@@ -28,7 +28,38 @@ def get_owner_venues(VenueOwnerID):
 
     return the_response
 
-# Get Venue Owner
+@venue_owner.route('/venue_owner', methods=['POST'])
+def add_venue_owner():
+    cursor = db.get_db().cursor()
+
+    vo_info = request.json
+
+    vo_tuple = f"('{vo_info.get('VOFirstName')}', '{vo_info.get('VOLastName')}', '{vo_info.get('VOPhone')}', '{vo_info.get('VOEmail')}')"
+
+    query = f"INSERT INTO VenueOwner (FirstName, LastName, PhoneNumber, Email) VALUES {vo_tuple}"
+
+    cursor.execute(query)
+
+    db.get_db().commit()
+
+    return "Successfully added new Venue Owner"
+
+# Get All Venue Owner
 @venue_owner.route('/venue_owner')
-def tester():
-    return "<h1>this is a test!</h1>"
+def get_venue_owners():
+    cursor = db.get_db().cursor()
+
+    query = "SELECT * FROM VenueOwners"
+
+    cursor.execute(query)
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
