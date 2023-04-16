@@ -13,7 +13,7 @@ venue_owner = Blueprint('venue_owners', __name__)
 def get_owner_venues(VenueOwnerID):
     cursor = db.get_db().cursor()
 
-    query = "SELECT * FROM Venues WHERE OwnerID = %s"
+    query = "SELECT VenueName as label, VenueID as value FROM Venues WHERE OwnerID = %s"
 
     cursor.execute(query, (VenueOwnerID,))
 

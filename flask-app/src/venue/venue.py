@@ -44,3 +44,24 @@ def get_tickets(VenueID):
     the_response.mimetype = 'application/json'
 
     return the_response
+
+# This is a sample route for the /test URI.  
+# as above, it just returns a simple string. 
+@venue.route('/venues/<VenueID>/revenue', methods=['GET'])
+def get_revenueo(VenueID):
+    cursor = db.get_db().cursor()
+
+    query = f"SELECT VenueName, Street, SUM(Price) AS Revenue FROM Tickets NATURAL JOIN Venues WHERE VenueID = %s AND CustomerID IS NOT NULL"
+
+    cursor.execute(query, (VenueID,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
