@@ -65,3 +65,15 @@ def get_revenueo(VenueID):
     the_response.mimetype = 'application/json'
 
     return the_response
+
+# This is to delete the venue by a venue owner
+@venue.route('/venues/<VenueID>', methods=['DELETE'])
+def delete_venue(VenueID):
+    cursor = db.get_db().cursor()
+
+    query = f"DELETE FROM Venues Where VenueID = %s"
+
+    cursor.execute(query, (VenueID,))
+
+    return "Deleted"
+
