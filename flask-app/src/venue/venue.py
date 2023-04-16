@@ -6,15 +6,16 @@ from datetime import datetime
 venue = Blueprint('venue', __name__)
 
 # Add a new venue  
-@venue.route('/venues', methods=['POST'])
-def add_venue():
+@venue.route('/venues/<OwnerID>', methods=['POST'])
+def add_venue(OwnerID):
     cursor = db.get_db().cursor()
 
     venue_info = request.json
 
-    venue_tuple = f"('{venue_info.get('NewVenueName')}', '{venue_info.get('NewVenuePhone')}, '{venue_info.get('NewVenueEmail')}', \
+    venue_tuple = f"('{venue_info.get('NewVenueName')}', '{venue_info.get('NewVenuePhone')}', '{venue_info.get('NewVenueEmail')}', \
                         '{venue_info.get('NewVenueStreet')}', '{venue_info.get('NewVenueCity')}', \
-                        '{venue_info.get('NewVenueState')}', '{venue_info.get('NewVenueZipcode')}', '{venue_info.get('NewVenueCountry')}')"
+                        '{venue_info.get('NewVenueState')}', '{venue_info.get('NewVenueZipcode')}', '{venue_info.get('NewVenueCountry')}', \
+                        '{venue_info.get('Venue_Owner')}')"
 
     query = f"INSERT INTO Venues (VenueName, PhoneNumber, Email, Street, City, State, Zipcode, Country, OwnerID) VALUES {venue_tuple}"
 
