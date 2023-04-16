@@ -71,10 +71,12 @@ def get_revenueo(VenueID):
 def delete_venue(VenueID):
     cursor = db.get_db().cursor()
 
-    query = f"UPDATE Venues SET PhoneNumber = NULL, Email = NULL, Street = NULL, City = NULL, \
-        State = NULL, Zipcode = NULL, Country = NULL,OwnerID = NULL WHERE VenueID = %s"
+    query = f"UPDATE Venues SET PhoneNumber = 'Unavailable', Email = 'Unavailable', Street = 'Unavailable', City = 'Unavailable', \
+        State = 'Unavailable', Zipcode = 'Unavailable', Country = 'Unavailable' WHERE VenueID = %s"
 
     cursor.execute(query, (VenueID,))
+
+    db.get_db().commit()
 
     return "Deleted"
 
