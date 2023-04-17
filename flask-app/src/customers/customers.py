@@ -128,7 +128,7 @@ def delete_account(userID):
 def get_dependent(userID):
     cursor = db.get_db().cursor()
 
-    query = f"SELECT * From Dependent Where Parent = %s"
+    query = f"SELECT CONCAT(FirstName, ' ', LastName) as label, DependentID as value From Dependent Where Parent = %s"
 
     cursor.execute(query, (userID,))
 
