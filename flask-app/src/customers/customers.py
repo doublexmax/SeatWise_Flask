@@ -109,3 +109,17 @@ def delete_dependent(userID):
     db.get_db().commit()
 
     return "Deleted dependent"
+
+@customers.route('/customers/<userID', methods =['DELETE'])
+def delete_account(userID);
+    cursor = db.get_db().cursor()
+
+    query = f"UPDATE Customers SET SET FirstName = 'unavailable', LastName = 'unavailable', \
+        PhoneNumber = NULL, Email = NULL, Street = NULL, City = NULL, State  = NULL, \
+            Zipcode  = NULL, Country  = NULL WHERE CustomerID = %s"
+    
+    cursor.execute(query, (userID,))
+
+    db.get_db().commit()
+    
+    return "Deleted customer account"
