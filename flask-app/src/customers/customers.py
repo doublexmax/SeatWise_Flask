@@ -116,7 +116,7 @@ def delete_account(userID):
 
     query = f"UPDATE Customers SET FirstName = 'unavailable', LastName = 'unavailable', \
         PhoneNumber = NULL, Email = NULL, Street = NULL, City = NULL, State  = NULL, \
-            Zipcode  = NULL, Country  = NULL WHERE CustomerID = %s"
+            Zipcode = NULL, Country = NULL WHERE CustomerID = %s"
     
     cursor.execute(query, (userID,))
 
