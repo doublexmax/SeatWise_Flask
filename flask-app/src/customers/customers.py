@@ -95,3 +95,17 @@ def add_customer():
     db.get_db().commit()
 
     return "Successfully added user into database."
+
+@customers.route('/customers/<userID', methods=['DELETE'])
+def delete_dependent(userID):
+    cursor = db.get_db().cursor()
+    
+    query = f"UPDATE Dependent SET FirstName = 'unavailable', LastName = 'unavailable', \
+        PhoneNumber = NULL, Email = NULL, Street = NULL, City = NULL, State  = NULL, \
+            Zipcode  = NULL, Country  = NULL, Relationship = NULL WHERE Parent = %s"
+    
+    cursor.execute(query, (userID,))
+
+    db.get_db().commit()
+
+    return "Deleted dependent"
