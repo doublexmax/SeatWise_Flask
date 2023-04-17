@@ -111,7 +111,7 @@ def delete_dependent(userID):
     return "Deleted dependent"
 
 @customers.route('/customers/<userID', methods =['DELETE'])
-def delete_account(userID);
+def delete_account(userID):
     cursor = db.get_db().cursor()
 
     query = f"UPDATE Customers SET SET FirstName = 'unavailable', LastName = 'unavailable', \
