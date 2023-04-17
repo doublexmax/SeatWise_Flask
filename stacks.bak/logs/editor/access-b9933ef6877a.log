@@ -1,0 +1,11 @@
+Load environment configuration
+mkdir: created directory '/appsmith-stacks/data/certificate'
+mkdir: created directory '/appsmith-stacks/data/certificate/conf'
+'/opt/appsmith/editor/index.html' -> '/opt/appsmith/index.html.original'
+127.0.0.1 - - [17/Apr/2023:19:04:58 +0000] "GET /rts-api/v1/health-check HTTP/1.1" 200 16 "-" "curl/7.68.0"
+127.0.0.1 - - [17/Apr/2023:19:05:09 +0000] "GET / HTTP/1.1" 200 4263 "-" "curl/7.68.0"
+127.0.0.1 - - [17/Apr/2023:19:05:24 +0000] "GET / HTTP/1.1" 200 4263 "-" "curl/7.68.0"
+127.0.0.1 - - [17/Apr/2023:19:05:39 +0000] "GET / HTTP/1.1" 200 4263 "-" "curl/7.68.0"
+Load environment configuration
+127.0.0.1 - - [17/Apr/2023:19:08:36 +0000] "GET /rts-api/v1/health-check HTTP/1.1" 200 16 "-" "curl/7.68.0"
+127.0.0.1 - - [17/Apr/2023:19:08:47 +0000] "GET / HTTP/1.1" 200 4263 "-" "curl/7.68.0"

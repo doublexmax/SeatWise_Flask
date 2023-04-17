@@ -1,0 +1,115 @@
++ http_conf=/opt/appsmith/templates/nginx-app-http.conf.template.sh
++ https_conf=/opt/appsmith/templates/nginx-app-https.conf.template.sh
++ ssl_conf_path=/appsmith-stacks/data/certificate/conf
++ APP_TEMPLATE=/opt/appsmith/templates/nginx-app-http.conf.template.sh
++ mkdir -pv /appsmith-stacks/data/certificate/conf
++ cat
++ cat
++ [[ -z 'self' * ]]
++ export 'APPSMITH_ALLOWED_FRAME_ANCESTORS='\''self'\'' *'
++ APPSMITH_ALLOWED_FRAME_ANCESTORS=''\''self'\'' *'
++ [[ -z false ]]
++ [[ -n '' ]]
++ bash /opt/appsmith/templates/nginx-app-http.conf.template.sh ''
++ index_html_served=/opt/appsmith/editor/index.html
++ index_html_original=/opt/appsmith/index.html.original
++ [[ ! -f /opt/appsmith/index.html.original ]]
++ cp -v /opt/appsmith/editor/index.html /opt/appsmith/index.html.original
++ node -e '
+const fs = require("fs")
+const content = fs.readFileSync("/opt/appsmith/index.html.original", "utf8").replace(
+  /\b__(APPSMITH_[A-Z0-9_]+)__\b/g,
+  (placeholder, name) => (process.env[name] || "")
+)
+fs.writeFileSync("/opt/appsmith/editor/index.html", content)
+'
++ exec nginx -g 'daemon off;error_log stderr info;'
+2023/04/17 19:04:57 [notice] 1588#1588: using the "epoll" event method
+2023/04/17 19:04:57 [notice] 1588#1588: nginx/1.18.0 (Ubuntu)
+2023/04/17 19:04:57 [notice] 1588#1588: OS: Linux 5.15.49-linuxkit
+2023/04/17 19:04:57 [notice] 1588#1588: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/04/17 19:04:57 [notice] 1588#1588: start worker processes
+2023/04/17 19:04:57 [notice] 1588#1588: start worker process 1621
+2023/04/17 19:04:57 [notice] 1588#1588: start worker process 1622
+2023/04/17 19:04:57 [notice] 1588#1588: start worker process 1623
+2023/04/17 19:04:57 [notice] 1588#1588: start worker process 1624
+2023/04/17 19:05:49 [notice] 1588#1588: signal 3 (SIGQUIT) received from 1, shutting down
+2023/04/17 19:05:49 [notice] 1622#1622: gracefully shutting down
+2023/04/17 19:05:49 [notice] 1623#1623: gracefully shutting down
+2023/04/17 19:05:49 [notice] 1621#1621: gracefully shutting down
+2023/04/17 19:05:49 [notice] 1622#1622: exiting
+2023/04/17 19:05:49 [notice] 1623#1623: exiting
+2023/04/17 19:05:49 [notice] 1621#1621: exiting
+2023/04/17 19:05:49 [notice] 1621#1621: exit
+2023/04/17 19:05:49 [notice] 1622#1622: exit
+2023/04/17 19:05:49 [notice] 1623#1623: exit
+2023/04/17 19:05:49 [notice] 1624#1624: gracefully shutting down
+2023/04/17 19:05:49 [notice] 1624#1624: exiting
+2023/04/17 19:05:49 [notice] 1588#1588: signal 17 (SIGCHLD) received from 1622
+2023/04/17 19:05:49 [notice] 1588#1588: worker process 1622 exited with code 0
+2023/04/17 19:05:49 [notice] 1588#1588: signal 29 (SIGIO) received
+2023/04/17 19:05:49 [notice] 1588#1588: signal 17 (SIGCHLD) received from 1623
+2023/04/17 19:05:49 [notice] 1588#1588: worker process 1623 exited with code 0
+2023/04/17 19:05:49 [notice] 1588#1588: signal 29 (SIGIO) received
+2023/04/17 19:05:49 [notice] 1588#1588: signal 17 (SIGCHLD) received from 1621
+2023/04/17 19:05:49 [notice] 1588#1588: worker process 1621 exited with code 0
+2023/04/17 19:05:49 [notice] 1588#1588: signal 29 (SIGIO) received
+2023/04/17 19:05:49 [notice] 1624#1624: exit
+2023/04/17 19:05:49 [notice] 1588#1588: signal 17 (SIGCHLD) received from 1624
+2023/04/17 19:05:49 [notice] 1588#1588: worker process 1624 exited with code 0
+2023/04/17 19:05:49 [notice] 1588#1588: exit
++ http_conf=/opt/appsmith/templates/nginx-app-http.conf.template.sh
++ https_conf=/opt/appsmith/templates/nginx-app-https.conf.template.sh
++ ssl_conf_path=/appsmith-stacks/data/certificate/conf
++ APP_TEMPLATE=/opt/appsmith/templates/nginx-app-http.conf.template.sh
++ mkdir -pv /appsmith-stacks/data/certificate/conf
++ cat
++ cat
++ [[ -z 'self' * ]]
++ export 'APPSMITH_ALLOWED_FRAME_ANCESTORS='\''self'\'' *'
++ APPSMITH_ALLOWED_FRAME_ANCESTORS=''\''self'\'' *'
++ [[ -z false ]]
++ [[ -n '' ]]
++ bash /opt/appsmith/templates/nginx-app-http.conf.template.sh ''
++ index_html_served=/opt/appsmith/editor/index.html
++ index_html_original=/opt/appsmith/index.html.original
++ [[ ! -f /opt/appsmith/index.html.original ]]
++ node -e '
+const fs = require("fs")
+const content = fs.readFileSync("/opt/appsmith/index.html.original", "utf8").replace(
+  /\b__(APPSMITH_[A-Z0-9_]+)__\b/g,
+  (placeholder, name) => (process.env[name] || "")
+)
+fs.writeFileSync("/opt/appsmith/editor/index.html", content)
+'
++ exec nginx -g 'daemon off;error_log stderr info;'
+2023/04/17 19:08:35 [notice] 1351#1351: using the "epoll" event method
+2023/04/17 19:08:35 [notice] 1351#1351: nginx/1.18.0 (Ubuntu)
+2023/04/17 19:08:35 [notice] 1351#1351: OS: Linux 5.15.49-linuxkit
+2023/04/17 19:08:35 [notice] 1351#1351: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/04/17 19:08:35 [notice] 1351#1351: start worker processes
+2023/04/17 19:08:35 [notice] 1351#1351: start worker process 1381
+2023/04/17 19:08:35 [notice] 1351#1351: start worker process 1382
+2023/04/17 19:08:35 [notice] 1351#1351: start worker process 1383
+2023/04/17 19:08:35 [notice] 1351#1351: start worker process 1384
+2023/04/17 19:09:02 [notice] 1351#1351: signal 3 (SIGQUIT) received from 1, shutting down
+2023/04/17 19:09:02 [notice] 1381#1381: gracefully shutting down
+2023/04/17 19:09:02 [notice] 1382#1382: gracefully shutting down
+2023/04/17 19:09:02 [notice] 1381#1381: exiting
+2023/04/17 19:09:02 [notice] 1383#1383: gracefully shutting down
+2023/04/17 19:09:02 [notice] 1383#1383: exiting
+2023/04/17 19:09:02 [notice] 1382#1382: exiting
+2023/04/17 19:09:02 [notice] 1384#1384: gracefully shutting down
+2023/04/17 19:09:02 [notice] 1384#1384: exiting
+2023/04/17 19:09:02 [notice] 1381#1381: exit
+2023/04/17 19:09:02 [notice] 1382#1382: exit
+2023/04/17 19:09:02 [notice] 1383#1383: exit
+2023/04/17 19:09:02 [notice] 1351#1351: signal 17 (SIGCHLD) received from 1382
+2023/04/17 19:09:02 [notice] 1351#1351: worker process 1381 exited with code 0
+2023/04/17 19:09:02 [notice] 1351#1351: worker process 1382 exited with code 0
+2023/04/17 19:09:02 [notice] 1351#1351: signal 29 (SIGIO) received
+2023/04/17 19:09:02 [notice] 1384#1384: exit
+2023/04/17 19:09:02 [notice] 1351#1351: signal 17 (SIGCHLD) received from 1384
+2023/04/17 19:09:02 [notice] 1351#1351: worker process 1383 exited with code 0
+2023/04/17 19:09:02 [notice] 1351#1351: worker process 1384 exited with code 0
+2023/04/17 19:09:02 [notice] 1351#1351: exit
