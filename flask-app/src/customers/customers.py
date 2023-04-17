@@ -244,3 +244,198 @@ def get_customers_phone(cIDPh):
     db.get_db().commit()
 
     return the_response
+
+
+# Editing emergency contact information 
+@customers.route('/customers/dependent/<cIdDFn>/firstname', methods=['GET'])
+def get_dependents_first_name(cIdDFn):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT FirstName FROM Dependent WHERE Parent = %s"
+
+    cursor.execute(query, (cIdDFn,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+
+# Editing emergency contact information 
+@customers.route('/customers/dependent/<cIdDln>/lastname', methods=['GET'])
+def get_dependents_last_name(cIdDln):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT LastName FROM Dependent WHERE Parent = %s"
+
+    cursor.execute(query, (cIdDln,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+@customers.route('/customers/dependent/<cIdDPhn>/phone', methods=['GET'])
+def get_dependents_phone(cIdDPhn):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT PhoneNumber FROM Dependent WHERE Parent = %s"
+
+    cursor.execute(query, (cIdDPhn,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+@customers.route('/customers/dependent/<cIdDR>/relationship', methods=['GET'])
+def get_dependents_relationship(cIdDR):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT Relationship FROM Dependent WHERE Parent = %s"
+
+    cursor.execute(query, (cIdDR,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+@customers.route('/customers/dependent/<cIdDSt>/street', methods=['GET'])
+def get_dependents_street(cIdDSt):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT Street FROM Dependent WHERE Parent = %s"
+
+    cursor.execute(query, (cIdDSt,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+@customers.route('/customers/dependent/<cIdDCy>/city', methods=['GET'])
+def get_dependents_city(cIdDCy):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT City FROM Dependent WHERE Parent = %s"
+
+    cursor.execute(query, (cIdDCy,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+@customers.route('/customers/dependent/<cIdDSa>/state', methods=['GET'])
+def get_dependents_state(cIdDSa):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT State FROM Dependent WHERE Parent = %s"
+
+    cursor.execute(query, (cIdDSa,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+
+@customers.route('/customers/dependent/<cIdDZc>/zipcode', methods=['GET'])
+def get_dependents_zipcode(cIdDZc):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT Zipcode FROM Dependent WHERE Parent = %s"
+
+    cursor.execute(query, (cIdDZc,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+
+@customers.route('/customers/dependent/<cIdDCr>/country', methods=['GET'])
+def get_dependents_country(cIdDCr):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT Country FROM Dependent WHERE Parent = %s"
+
+    cursor.execute(query, (cIdDCr,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
