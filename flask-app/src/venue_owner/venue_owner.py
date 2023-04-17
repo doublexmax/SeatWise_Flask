@@ -87,3 +87,45 @@ def get_venue_owner_names():
     db.get_db().commit()
 
     return the_response
+
+@venue_owner.route('/venue_owner/<voIDfn>/firstname', methods=['GET'])
+def get_venue_owner_first_name(voIDfn):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT FirstName FROM VenueOwner WHERE OwnerID = %s"
+
+    cursor.execute(query, (voIDfn,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+@venue_owner.route('/venue_owner/<voIDln>/lastname', methods=['GET'])
+def get_venue_owner_last_name(voIDln):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT LastName FROM VenueOwner WHERE OwnerID = %s"
+
+    cursor.execute(query, (voIDln,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
