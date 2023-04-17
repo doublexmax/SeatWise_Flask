@@ -88,50 +88,7 @@ def get_venue_owner_names():
 
     return the_response
 
-@venue_owner.route('/venue_owner/<voIDfn>/firstname', methods=['GET'])
-def get_venue_owner_first_name(voIDfn):
-    cursor = db.get_db().cursor()
 
-    query = "SELECT FirstName FROM VenueOwner WHERE OwnerID = %s"
-
-    cursor.execute(query, (voIDfn,))
-
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    db.get_db().commit()
-
-    return the_response
-
-@venue_owner.route('/venue_owner/<voIDln>/lastname', methods=['GET'])
-def get_venue_owner_last_name(voIDln):
-    cursor = db.get_db().cursor()
-
-    query = "SELECT LastName FROM VenueOwner WHERE OwnerID = %s"
-
-    cursor.execute(query, (voIDln,))
-
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    db.get_db().commit()
-
-    return the_response
-
-@venue_owner.route('/venue_owner/<voIDpn>/phonenumber', methods=['GET'])
-def get_venue_owner_phone_number(voIDpn):
     cursor = db.get_db().cursor()
 
     query = "SELECT PhoneNumber FROM VenueOwner WHERE OwnerID = %s"
@@ -151,13 +108,13 @@ def get_venue_owner_phone_number(voIDpn):
 
     return the_response
 
-@venue_owner.route('/venue_owner/<voIDe>/email', methods=['GET'])
-def get_venue_owner_email(voIDe):
+@venue_owner.route('/venue_owner/<voIDinfo>/info', methods=['GET'])
+def get_venue_owner_email(voIDinfo):
     cursor = db.get_db().cursor()
 
-    query = "SELECT Email FROM VenueOwner WHERE OwnerID = %s"
+    query = "SELECT FirstName, LastName, PhoneNumber, Email FROM VenueOwner WHERE OwnerID = %s"
 
-    cursor.execute(query, (voIDe,))
+    cursor.execute(query, (voIDinfo,))
 
     row_headers = [x[0] for x in cursor.description]
     json_data = []

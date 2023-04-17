@@ -147,134 +147,14 @@ def get_ticket(performanceID):
 
     return jsonify(json_data)
 
-# Return the venue email given the venue owner id
-@venue.route('/venues/<OwnerIDe>/email', methods=['GET'])
-def get_venues_email(OwnerIDe):
+# Return the venue info given the venue owner id
+@venue.route('/venues/<OwnerIDinfo>/info', methods=['GET'])
+def get_venues_info(OwnerIDinfo):
     cursor = db.get_db().cursor()
 
-    query = "SELECT Email FROM Venues WHERE OwnerID = %s"
+    query = "SELECT Email, PhoneNumber, Street, State, City, Zipcode, Country FROM Venues WHERE OwnerID = %s"
 
-    cursor.execute(query, (OwnerIDe,))
-
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    return the_response
-
-# Return the venue email given the venue owner id
-@venue.route('/venues/<OwnerIDpn>/phonenumber', methods=['GET'])
-def get_venues_phonenumber(OwnerIDpn):
-    cursor = db.get_db().cursor()
-
-    query = "SELECT PhoneNumber FROM Venues WHERE OwnerID = %s"
-
-    cursor.execute(query, (OwnerIDpn,))
-
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    return the_response
-
-# Return the venue street given the venue owner id
-@venue.route('/venues/<OwnerIDs>/street', methods=['GET'])
-def get_venues_street(OwnerIDs):
-    cursor = db.get_db().cursor()
-
-    query = "SELECT Street FROM Venues WHERE OwnerID = %s"
-
-    cursor.execute(query, (OwnerIDs,))
-
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    return the_response
-
-# Return the venue city given the venue owner id
-@venue.route('/venues/<OwnerIDc>/city', methods=['GET'])
-def get_venues_city(OwnerIDc):
-    cursor = db.get_db().cursor()
-
-    query = "SELECT City FROM Venues WHERE OwnerID = %s"
-
-    cursor.execute(query, (OwnerIDc,))
-
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    return the_response
-
-# Return the venue state given the venue owner id
-@venue.route('/venues/<OwnerIDst>/state', methods=['GET'])
-def get_venues_state(OwnerIDst):
-    cursor = db.get_db().cursor()
-
-    query = "SELECT State FROM Venues WHERE OwnerID = %s"
-
-    cursor.execute(query, (OwnerIDst,))
-
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    return the_response
-
-# Return the venue zipcode given the venue owner id
-@venue.route('/venues/<OwnerIDzc>/zipcode', methods=['GET'])
-def get_venues_zipcode(OwnerIDzc):
-    cursor = db.get_db().cursor()
-
-    query = "SELECT Zipcode FROM Venues WHERE OwnerID = %s"
-
-    cursor.execute(query, (OwnerIDzc,))
-
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    return the_response
-
-# Return the venue country given the venue owner id
-@venue.route('/venues/<OwnerIDct>/country', methods=['GET'])
-def get_venues_country(OwnerIDct):
-    cursor = db.get_db().cursor()
-
-    query = "SELECT Country FROM Venues WHERE OwnerID = %s"
-
-    cursor.execute(query, (OwnerIDct,))
+    cursor.execute(query, (OwnerIDinfo,))
 
     row_headers = [x[0] for x in cursor.description]
     json_data = []
