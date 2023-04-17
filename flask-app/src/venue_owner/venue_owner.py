@@ -129,3 +129,60 @@ def get_venue_owner_last_name(voIDln):
     db.get_db().commit()
 
     return the_response
+
+@venue_owner.route('/venue_owner/<voIDpn>/phonenumber', methods=['GET'])
+def get_venue_owner_phone_number(voIDpn):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT PhoneNumber FROM VenueOwner WHERE OwnerID = %s"
+
+    cursor.execute(query, (voIDpn,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+@venue_owner.route('/venue_owner/<voIDe>/email', methods=['GET'])
+def get_venue_owner_email(voIDe):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT Email FROM VenueOwner WHERE OwnerID = %s"
+
+    cursor.execute(query, (voIDe,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+@venue_owner.route('/venue_owner/<VenueOwnerID>', methods=['PUT'])
+def put_venue_owners(VenueOwnerID):
+    cursor = db.get_db().cursor()
+
+    vo_info = request.json
+
+    query = f"UPDATE VenueOwner SET FirstName = '{vo_info.get('VOFirstName')}', LastName = '{vo_info.get('VOLastName')}', \
+    PhoneNumber = '{vo_info.get('VOPhone')}', Email = '{vo_info.get('VOEmail')}' WHERE OwnerID = %s"
+
+    cursor.execute(query, (VenueOwnerID,))
+
+    db.get_db().commit()
+
+    return "Success!"
