@@ -134,6 +134,12 @@ def assign_ticket(userID, ticketID):
     cursor.execute(query, (userID, ticketID))
 
     db.get_db().commit()
+
+    return the_response
+
+# Getting Customers Last Name for Edit Form 
+@customers.route('/customers/<cIDln>/lastname', methods=['GET'])
+def get_customers_last_name(cIDln):
     
     return "Assigned ticket succesfully"
 @customers.route('/customers/<userID>/dependents', methods = ['GET'])
