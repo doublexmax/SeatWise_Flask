@@ -96,15 +96,15 @@ def add_customer():
 
     return "Successfully added user into database."
 
-@customers.route('/customers/<userID>', methods=['DELETE'])
-def delete_dependent(userID):
+@customers.route('/customers/<userID>/remove_dependent/<dependentID>', methods=['DELETE'])
+def delete_dependent(userID, dependentID):
     cursor = db.get_db().cursor()
     
     query = f"UPDATE Dependent SET FirstName = 'unavailable', LastName = 'unavailable', \
         PhoneNumber = NULL, Email = NULL, Street = NULL, City = NULL, State  = NULL, \
-            Zipcode  = NULL, Country  = NULL, Relationship = NULL WHERE Parent = %s"
+            Zipcode  = NULL, Country  = NULL, Relationship = NULL WHERE Parent = %s and DependentID  = %s"
     
-    cursor.execute(query, (userID,))
+    cursor.execute(query, (userID, dependentID))
 
     db.get_db().commit()
 
@@ -124,7 +124,7 @@ def delete_account(userID):
     
     return "Deleted customer account"
 
-@customers.route('/customers/<userID>', methods = ['GET'])
+@customers.route('/customers/<userID>/dependents', methods = ['GET'])
 def get_dependent(userID):
     cursor = db.get_db().cursor()
 
@@ -132,6 +132,13 @@ def get_dependent(userID):
 
     cursor.execute(query, (userID,))
 
-    db.get_db().commit()
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
 
-    return "Successfully showed the dependent"
+    return the_response
