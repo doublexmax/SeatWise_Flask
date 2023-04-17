@@ -96,7 +96,7 @@ def add_customer():
 
     return "Successfully added user into database."
 
-@customers.route('/customers/<userID', methods=['DELETE'])
+@customers.route('/customers/<userID>', methods=['DELETE'])
 def delete_dependent(userID):
     cursor = db.get_db().cursor()
     
