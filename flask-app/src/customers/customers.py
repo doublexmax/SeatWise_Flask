@@ -160,3 +160,92 @@ def get_dependent(userID):
     the_response.mimetype = 'application/json'
 
     return the_response
+
+# Getting Customers First Name for Edit Form 
+@customers.route('/customers/<cIDfn>/firstname', methods=['GET'])
+def get_customers_first_name(cIDfn):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT FirstName FROM Customers WHERE CustomerID = %s"
+
+    cursor.execute(query, (cIDfn,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+# Getting Customers Last Name for Edit Form 
+@customers.route('/customers/<cIDln>/lastname', methods=['GET'])
+def get_customers_last_name(cIDln):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT LastName FROM Customers WHERE CustomerID = %s"
+
+    cursor.execute(query, (cIDln,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+# Getting Customers Email 
+@customers.route('/customers/<cIDe>/email', methods=['GET'])
+def get_customers_email(cIDe):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT Email FROM Customers WHERE CustomerID = %s"
+
+    cursor.execute(query, (cIDe,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
+
+
+# Getting Customers Phone number
+@customers.route('/customers/<cIDPh>/phone_no', methods=['GET'])
+def get_customers_phone(cIDPh):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT PhoneNumber FROM Customers WHERE CustomerID = %s"
+
+    cursor.execute(query, (cIDPh,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    db.get_db().commit()
+
+    return the_response
