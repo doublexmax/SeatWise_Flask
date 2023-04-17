@@ -23,6 +23,24 @@ def get_customers():
 
     return the_response
 
+# Get all customers names for the form from the DB
+@customers.route('/customers/names', methods=['GET'])
+def get_customers_form():
+    cursor = db.get_db().cursor()
+
+    cursor.execute("SELECT CONCAT(FirstName, ' ', LastName) as label, CustomerID as value FROM Customers")
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
+
 # Get customer detail for customer with particular userID
 @customers.route('/customers/<userID>', methods=['GET'])
 def get_customer(userID):
@@ -40,12 +58,32 @@ def get_customer(userID):
 
     return the_response
 
+# Get customer ticket detail for customer with particular userID
+@customers.route('/customers/<userID>/tickets', methods=['GET'])
+def get_customer_ticket(userID):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT VenueName, Description, Date, Seat_Row, Seat_Column, Section FROM \
+                Customers JOIN Tickets USING (CustomerID) JOIN Venues USING (VenueID) JOIN Performance USING (PerformanceID) WHERE CustomerID = %s"
+
+    cursor.execute(query, (userID,))
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
+
 @customers.route('/customers', methods=['POST'])
 def add_customer():
     cursor = db.get_db().cursor()
 
     cust_info = request.json
-
 
     cust_tuple = f"('{cust_info.get('CusFirstName', 'NULL')}', '{cust_info.get('CusLastName')}', '{cust_info.get('CusPhone')}', '{cust_info.get('CusEmail')}', '{cust_info.get('CusDOB')[:10]}', \
         '{cust_info.get('CusStreet')}', '{cust_info.get('CustCity')}', '{cust_info.get('CustState')}', '{cust_info.get('CustZipcode')}', '{cust_info.get('CustCountry')}')"
