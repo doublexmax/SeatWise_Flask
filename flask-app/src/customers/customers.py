@@ -102,7 +102,7 @@ def delete_dependent(userID, dependentID):
     
     query = f"UPDATE Dependent SET FirstName = 'unavailable', LastName = 'unavailable', \
         PhoneNumber = NULL, Email = NULL, Street = NULL, City = NULL, State  = NULL, \
-            Zipcode  = NULL, Country  = NULL, Relationship = NULL WHERE Parent = %s and DependentID  = %s"
+            Zipcode  = NULL, Country  = NULL, Relationship = 'unavailable' WHERE Parent = %s and DependentID  = %s"
     
     cursor.execute(query, (userID, dependentID))
 
