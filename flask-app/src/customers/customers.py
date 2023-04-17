@@ -114,7 +114,7 @@ def delete_dependent(userID):
 def delete_account(userID):
     cursor = db.get_db().cursor()
 
-    query = f"UPDATE Customers SET SET FirstName = 'unavailable', LastName = 'unavailable', \
+    query = f"UPDATE Customers SET FirstName = 'unavailable', LastName = 'unavailable', \
         PhoneNumber = NULL, Email = NULL, Street = NULL, City = NULL, State  = NULL, \
             Zipcode  = NULL, Country  = NULL WHERE CustomerID = %s"
     
@@ -123,3 +123,15 @@ def delete_account(userID):
     db.get_db().commit()
     
     return "Deleted customer account"
+
+@customers.route('/customers/<userID>', methods = ['GET'])
+def get_dependent(userID):
+    cursor = db.get_db().cursor()
+
+    query = f"SELECT * From Dependent Where Parent = %s"
+
+    cursor.execute(query, (userID,))
+
+    db.get_db().commit()
+
+    return "Successfully showed the dependent"
