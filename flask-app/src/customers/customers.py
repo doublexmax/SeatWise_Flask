@@ -140,7 +140,7 @@ def assign_ticket(userID, ticketID):
 def get_dependent(userID):
     cursor = db.get_db().cursor()
 
-    query = f"SELECT CONCAT(FirstName, ' ', LastName) as label, DependentID as value From Dependent Where Parent = %s and FirstName is not 'unavailable'"
+    query = f"SELECT CONCAT(FirstName, ' ', LastName) as label, DependentID as value From Dependent Where Parent = %s and FirstName !='unavailable'"
 
     cursor.execute(query, (userID,))
 
