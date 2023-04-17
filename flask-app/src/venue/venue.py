@@ -81,3 +81,44 @@ def delete_venue(VenueID):
 
     return "Deleted"
 
+# This is to delete the venue by a venue owner
+@venue.route('/venues/<VenueID>/performances', methods=['GET'])
+def venue_performances(VenueID):
+    cursor = db.get_db().cursor()
+
+    query = f"SELECT Description as label, PerformanceID as value FROM Venues JOIN Performance USING(VenueID) WHERE VenueID = %s"
+
+    cursor.execute(query, (VenueID,))
+
+    db.get_db().commit()
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
+
+# Return all venue's a venue owner owns
+@venue.route('/venues/form', methods=['GET'])
+def get_venues():
+    cursor = db.get_db().cursor()
+
+    query = "SELECT VenueName as label, VenueID as value FROM Venues"
+
+    cursor.execute(query)
+
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
