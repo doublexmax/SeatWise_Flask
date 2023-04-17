@@ -122,3 +122,27 @@ def get_venues():
     the_response.mimetype = 'application/json'
 
     return the_response
+
+@venue.route('/tickets/<performanceID>/form', methods=['GET'])
+def get_ticket(performanceID):
+    cursor = db.get_db().cursor()
+
+    query = "SELECT CONCAT(Section, Seat_Row, Seat_Column, ' Price: $', Price) as label, TicketID AS value FROM Tickets WHERE PerformanceID = %s AND CustomerID IS NULL"
+
+    cursor.execute(query, (performanceID))
+       # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)

@@ -54,15 +54,3 @@ def get_ticket(ticketID):
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
-
-@tickets.route('/tickets/<ticketID>', methods=['PUT'])
-def assign_ticket(ticketID):
-    info = request.json
-
-    query = "UPDATE Tickets SET CustomerID = %s WHERE TicketID = %s"
-
-    cursor = db.get_db().cursor()
-
-    cursor.execute(query, (info.customerid, ticketID))
-
-    return f"Successfully assigned {ticketID} to {info.customerid}"

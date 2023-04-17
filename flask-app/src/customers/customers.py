@@ -123,3 +123,16 @@ def delete_account(userID):
     db.get_db().commit()
     
     return "Deleted customer account"
+
+
+@customers.route('/customers/<userID>/assign_ticket/<ticketID>', methods=['PUT'])
+def assign_ticket(userID, ticketID):
+    cursor = db.get_db().cursor()
+
+    query = f"UPDATE Tickets SET CustomerID = %s WHERE TicketID = %s"
+    
+    cursor.execute(query, (userID, ticketID))
+
+    db.get_db().commit()
+    
+    return "Assigned ticket succesfully"
