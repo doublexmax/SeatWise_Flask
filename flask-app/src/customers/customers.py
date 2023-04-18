@@ -96,6 +96,23 @@ def add_customer():
 
     return "Successfully added user into database."
 
+@customers.route('/customers/<customerID>/dependents', methods=['POST'])
+def add_customer_dependent(customerID):
+    cursor = db.get_db().cursor()
+
+    cust_info = request.json
+
+    cust_tuple = f"('{cust_info.get('DepFirstName', 'NULL')}', '{cust_info.get('DepLastName')}', '{cust_info.get('DepPhoneCopy')}', '{cust_info.get('DepEmail')}', '{cust_info.get('Relationship')}', \
+        '{cust_info.get('DepStreet')}', '{cust_info.get('DepCity')}', '{cust_info.get('DepState')}', '{cust_info.get('DepZipcode')}', '{cust_info.get('DepCountry')}', {customerID})"
+    
+    query = f"INSERT INTO Dependent (FirstName, LastName, PhoneNumber, Email, Relationship, Street, City, State, ZipCode, Country, Parent) VALUES {cust_tuple}"
+
+    cursor.execute(query)
+
+    db.get_db().commit()
+
+    return "Successfully added dependent."
+
 @customers.route('/customers/<userID>/remove_dependent/<dependentID>', methods=['DELETE'])
 def delete_dependent(userID, dependentID):
     cursor = db.get_db().cursor()
@@ -135,7 +152,7 @@ def assign_ticket(userID, ticketID):
 
     db.get_db().commit()
 
-    return the_response
+    return "Successfully assigned ticket"
 
 @customers.route('/customers/<userID>/dependents', methods = ['GET'])
 def get_dependent(userID):
