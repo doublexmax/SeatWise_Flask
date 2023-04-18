@@ -270,18 +270,17 @@ def get_artists_name():
     return the_response
 
 # Submitting favourite artist
-@customers.route('/customers/artist/fanof<CidAid>', methods=['POST'])
+@customers.route('/customers/artist/fanof/<CidAid>', methods=['POST'])
 def add_favourite_artist(CidAid):
     
     cursor = db.get_db().cursor()
 
     artist_info = request.json
 
-    artist_tuple = f"('{artist_info.get('MultiSelect1')}')"
+    for artist_ID in artist_info:
+        query = f"INSERT INTO Fan_Of (CustomerID, ArtistID) VALUES ({CidAid}, {artist_ID})"
 
-    query = f"INSERT INTO FanOf (ArtistID) VALUES {artist_tuple} WHERE CustomerID = %s"
-
-    cursor.execute(query, (CidAid,))
+        cursor.execute(query)
 
     db.get_db().commit()
 
