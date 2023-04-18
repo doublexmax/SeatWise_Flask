@@ -90,25 +90,6 @@ def get_venue_owner_names():
     return the_response
 
 
-    cursor = db.get_db().cursor()
-
-    query = "SELECT PhoneNumber FROM VenueOwner WHERE OwnerID = %s"
-
-    cursor.execute(query, (voIDpn,))
-
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    db.get_db().commit()
-
-    return the_response
-
 # Get All Info of a Venue Owner
 @venue_owner.route('/venue_owner/<voIDinfo>/info', methods=['GET'])
 def get_venue_owner_email(voIDinfo):
