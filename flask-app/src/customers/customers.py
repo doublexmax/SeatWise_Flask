@@ -213,7 +213,7 @@ def put_customers(userID):
 
 # Editing emergency contact information of Dependent
 @customers.route('/customers/dependent/<cIdDInf>/info', methods=['GET'])
-def get_dependents_first_name(cIdDInf):
+def get_dependents_info(cIdDInf):
     cursor = db.get_db().cursor()
 
     query = "SELECT FirstName, LastName, Email, PhoneNumber, Relationship, Street, City, State, Zipcode, Country FROM Dependent WHERE Parent = %s"
@@ -268,3 +268,20 @@ def get_artists_name():
     the_response.mimetype = 'application/json'
 
     return the_response
+
+# Submitting favourite artist
+@customers.route('/customers/artist/fanof/<CidAid>', methods=['POST'])
+def add_favourite_artist(CidAid):
+    
+    cursor = db.get_db().cursor()
+
+    artist_info = request.json
+
+    for artist_ID in artist_info:
+        query = f"INSERT INTO Fan_Of (CustomerID, ArtistID) VALUES ({CidAid}, {artist_ID})"
+
+        cursor.execute(query)
+
+    db.get_db().commit()
+
+    return "Successfully added Favourite Artists"
