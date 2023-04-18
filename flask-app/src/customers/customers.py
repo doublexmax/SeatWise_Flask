@@ -268,3 +268,21 @@ def get_artists_name():
     the_response.mimetype = 'application/json'
 
     return the_response
+
+# Submitting favourite artist
+@customers.route('/customers/artist/fanof<CidAid>', methods=['POST'])
+def add_favourite_artist(CidAid):
+    
+    cursor = db.get_db().cursor()
+
+    artist_info = request.json
+
+    artist_tuple = f"('{artist_info.get('MultiSelect1')}')"
+
+    query = f"INSERT INTO FanOf (ArtistID) VALUES {artist_tuple} WHERE CustomerID = %s"
+
+    cursor.execute(query, (CidAid,))
+
+    db.get_db().commit()
+
+    return "Successfully added Favourite Artists"
