@@ -1,0 +1,65 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Blueprint Ticket Test",
+    "dateExported": "2023-04-18T23:30:32.066Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "3b25f244-70d5-467d-aac1-056d1829ce19",
+            "colId": "924fc5c1-9bd7-41b9-a69e-51140d261974",
+            "containerId": "",
+            "name": "GetAllTickets-Test 1",
+            "url": "localhost:8001/t/tickets",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-04-18T23:26:43.470Z",
+            "modified": "2023-04-18T23:27:09.206Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "42f35f97-66ce-49b4-93f3-c180ce99c513",
+            "colId": "924fc5c1-9bd7-41b9-a69e-51140d261974",
+            "containerId": "",
+            "name": "GetAllTickets-Test 2",
+            "url": "localhost:8001/t/tickets",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-04-18T23:27:12.733Z",
+            "modified": "2023-04-18T23:27:12.733Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "6a4cd741-034e-455b-bb01-0b2c487309eb",
+            "colId": "924fc5c1-9bd7-41b9-a69e-51140d261974",
+            "containerId": "",
+            "name": "GetTicketsInfoOfAGivenTicketID-Test 1",
+            "url": "localhost:8001/t/tickets/2",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-04-18T23:28:09.367Z",
+            "modified": "2023-04-18T23:28:58.054Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "572e6a32-b13d-4c51-bc2a-8c3690a2ff4c",
+            "colId": "924fc5c1-9bd7-41b9-a69e-51140d261974",
+            "containerId": "",
+            "name": "GetTicketsInfoOfAGivenTicketID-Test 2",
+            "url": "localhost:8001/t/tickets/4",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-04-18T23:29:20.574Z",
+            "modified": "2023-04-18T23:29:30.110Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

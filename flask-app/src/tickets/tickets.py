@@ -31,6 +31,7 @@ def get_products():
 
     return jsonify(json_data)
 
+# Get the specific ticket info given the ticketID
 @tickets.route('/tickets/<ticketID>', methods=['GET'])
 def get_ticket(ticketID):
     cursor = db.get_db().cursor()
