@@ -8,7 +8,7 @@ from datetime import datetime
 # blueprint object, not the app object.
 venue_owner = Blueprint('venue_owners', __name__)
 
-# Return all venue's a venue owner owns
+# Get all venues owned by a venue owner 
 @venue_owner.route('/venues/<VenueOwnerID>', methods=['GET'])
 def get_owner_venues(VenueOwnerID):
     cursor = db.get_db().cursor()
@@ -28,6 +28,7 @@ def get_owner_venues(VenueOwnerID):
 
     return the_response
 
+# Add a new venue owner
 @venue_owner.route('/venue_owner', methods=['POST'])
 def add_venue_owner():
     cursor = db.get_db().cursor()
@@ -49,7 +50,7 @@ def add_venue_owner():
 def get_venue_owners():
     cursor = db.get_db().cursor()
 
-    query = "SELECT * FROM VenueOwners"
+    query = "SELECT * FROM VenueOwner"
 
     cursor.execute(query)
 
@@ -66,7 +67,7 @@ def get_venue_owners():
 
     return the_response
 
-# Get All Venue Owner
+# Get All Venue Owner First + Last Name
 @venue_owner.route('/venue_owner/name', methods=['GET'])
 def get_venue_owner_names():
     cursor = db.get_db().cursor()
@@ -108,6 +109,7 @@ def get_venue_owner_names():
 
     return the_response
 
+# Get All Info of a Venue Owner
 @venue_owner.route('/venue_owner/<voIDinfo>/info', methods=['GET'])
 def get_venue_owner_email(voIDinfo):
     cursor = db.get_db().cursor()
@@ -129,6 +131,7 @@ def get_venue_owner_email(voIDinfo):
 
     return the_response
 
+# Update the Info of the specified Venue Owner
 @venue_owner.route('/venue_owner/<VenueOwnerID>', methods=['PUT'])
 def put_venue_owners(VenueOwnerID):
     cursor = db.get_db().cursor()
