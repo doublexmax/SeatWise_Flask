@@ -5,7 +5,7 @@ from datetime import datetime
 
 venue = Blueprint('venue', __name__)
 
-# Add a new venue  
+# Add a new venue for the given venue owner 
 @venue.route('/venues/<OwnerID>', methods=['POST'])
 def add_venue(OwnerID):
     cursor = db.get_db().cursor()
@@ -25,8 +25,7 @@ def add_venue(OwnerID):
 
     return "Successfully added new Venue"
 
-# This is a sample route for the /test URI.  
-# as above, it just returns a simple string. 
+# Get all the tickets of the given venue
 @venue.route('/venues/<VenueID>/tickets', methods=['GET'])
 def get_tickets(VenueID):
     cursor = db.get_db().cursor()
@@ -46,8 +45,7 @@ def get_tickets(VenueID):
 
     return the_response
 
-# This is a sample route for the /test URI.  
-# as above, it just returns a simple string. 
+# Get the revenue of the given venue
 @venue.route('/venues/<VenueID>/revenue', methods=['GET'])
 def get_revenueo(VenueID):
     cursor = db.get_db().cursor()
@@ -81,7 +79,7 @@ def delete_venue(VenueID):
 
     return "Deleted"
 
-# This is to delete the venue by a venue owner
+# This is to get all the performances of the given Venue
 @venue.route('/venues/<VenueID>/performances', methods=['GET'])
 def venue_performances(VenueID):
     cursor = db.get_db().cursor()
@@ -103,7 +101,7 @@ def venue_performances(VenueID):
 
     return the_response
 
-# Return all venue's a venue owner owns
+# Get Name and ID of all Venue
 @venue.route('/venues/form', methods=['GET'])
 def get_venues():
     cursor = db.get_db().cursor()
@@ -123,6 +121,7 @@ def get_venues():
 
     return the_response
 
+# Get Ticket Info and Ticket ID of the given performance
 @venue.route('/tickets/<performanceID>/form', methods=['GET'])
 def get_ticket(performanceID):
     cursor = db.get_db().cursor()
@@ -147,7 +146,7 @@ def get_ticket(performanceID):
 
     return jsonify(json_data)
 
-# Return the venue info given the venue owner id
+# Return all the venue info given the venue owner id
 @venue.route('/venues/<OwnerIDinfo>/info', methods=['GET'])
 def get_venues_info(OwnerIDinfo):
     cursor = db.get_db().cursor()
@@ -167,6 +166,7 @@ def get_venues_info(OwnerIDinfo):
 
     return the_response
 
+# Update the Venue Info of the given Venue Owner
 @venue.route('/venues/<OwnerID>', methods=['PUT'])
 def put_venues(OwnerID):
     cursor = db.get_db().cursor()
