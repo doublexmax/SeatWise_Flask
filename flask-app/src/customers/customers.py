@@ -252,13 +252,11 @@ def put_customers_dependent(userID):
     return "Success!"
 
 # Add artists as favorite artists to the customer
-@customers.route('/customers', methods = ['GET'])
+@customers.route('/customers/fanof', methods = ['GET'])
 def get_artists_name():
     cursor = db.get_db().cursor()
 
-    d_info = request.json
-
-    cursor.execute("SELECT CONCAT(FirstName, ' ', LastName) as label FROM Artists")
+    cursor.execute("SELECT CONCAT(FirstName, ' ', LastName) as label, ArtistID as value FROM Artists")
 
     row_headers = [x[0] for x in cursor.description]
     json_data = []
@@ -268,7 +266,5 @@ def get_artists_name():
     the_response = make_response(jsonify(json_data))
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
-
-    db.get_db().commit()
 
     return the_response
