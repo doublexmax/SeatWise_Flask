@@ -178,6 +178,22 @@ def get_customers_info(cIDInf):
 
     return the_response
 
+# Update Customers Info from Edit form
+@customers.route('/customers/<userID>', methods=['PUT'])
+def put_customers(userID):
+    cursor = db.get_db().cursor()
+
+    c_info = request.json
+
+    query = f"UPDATE Customers SET FirstName = '{c_info.get('VOFirstNameCopy')}', LastName = '{c_info.get('VOLastNameCopy')}', \
+    PhoneNumber = '{c_info.get('VOPhoneCopy')}', Email = '{c_info.get('VOEmailCopy')}' WHERE CustomerID = %s"
+
+    cursor.execute(query, (userID,))
+
+    db.get_db().commit()
+
+    return "Success!"
+
 # Editing emergency contact information of Dependent
 @customers.route('/customers/dependent/<cIdDInf>/info', methods=['GET'])
 def get_dependents_first_name(cIdDInf):
@@ -199,4 +215,22 @@ def get_dependents_first_name(cIdDInf):
     db.get_db().commit()
 
     return the_response
+
+# Update Customer's Dependent Info from Edit form
+@customers.route('/customers/dependent/<userID>', methods=['PUT'])
+def put_customers_dependent(userID):
+    cursor = db.get_db().cursor()
+
+    d_info = request.json
+
+    query = f"UPDATE Dependent SET FirstName = '{d_info.get('DepFirstName')}', LastName = '{d_info.get('DepLastName')}', \
+    PhoneNumber = '{d_info.get('DepPhoneCopy')}', Relationship = '{d_info.get('Relationship')}', \
+    Street = '{d_info.get('DepStreet')}', City = '{d_info.get('DepCity')}', State = '{d_info.get('DepState')}', \
+    Zipcode = '{d_info.get('DepZipcode')}', Country = '{d_info.get('DepCountry')}' WHERE Parent = %s"
+
+    cursor.execute(query, (userID,))
+
+    db.get_db().commit()
+
+    return "Success!"
 
