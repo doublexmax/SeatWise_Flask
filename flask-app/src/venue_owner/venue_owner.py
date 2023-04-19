@@ -1,12 +1,19 @@
 from flask import Blueprint, request, jsonify, make_response
 import json
 from src import db
-from datetime import datetime
 
 # Create a new Flask Blueprint
 # IMPORTANT: Notice in the routes below, we are adding routes to the 
 # blueprint object, not the app object.
 venue_owner = Blueprint('venue_owners', __name__)
+
+'''
+
+-----------------------------------------
+
+All GET Routes for Venue Owner Blueprint
+
+'''
 
 # Get all venues owned by a venue owner 
 @venue_owner.route('/venues/<VenueOwnerID>', methods=['GET'])
@@ -72,8 +79,8 @@ def get_venue_owner_email(voIDinfo):
 
     return the_response
 
-# Get All Venue Owner
-@venue_owner.route('/venue_owner')
+# Get All Venue Owners
+@venue_owner.route('/venue_owner', methods=['GET'])
 def get_venue_owners():
     cursor = db.get_db().cursor()
 
@@ -94,6 +101,14 @@ def get_venue_owners():
 
     return the_response
 
+'''
+
+-----------------------------------------
+
+All POST Routes for Venue Owner Blueprint
+
+'''
+
 # Add a new venue owner
 @venue_owner.route('/venue_owner', methods=['POST'])
 def add_venue_owner():
@@ -110,6 +125,14 @@ def add_venue_owner():
     db.get_db().commit()
 
     return "Successfully added new Venue Owner"
+
+'''
+
+-----------------------------------------
+
+All PUT Routes for Venue Owner Blueprint
+
+'''
 
 # Update the Info of the specified Venue Owner
 @venue_owner.route('/venue_owner/<VenueOwnerID>', methods=['PUT'])

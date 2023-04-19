@@ -129,7 +129,7 @@ def get_customers_info(cIDInf):
 
     return the_response
 
-# Add artists as favorite artists to the customer
+# Find all of the artists and present in form format
 @customers.route('/customers/fanof', methods = ['GET'])
 def get_artists_name():
     cursor = db.get_db().cursor()
@@ -147,7 +147,7 @@ def get_artists_name():
 
     return the_response
 
-# Editing emergency contact information of Dependent
+# Get emergency contact information of Dependents for a customer
 @customers.route('/customers/dependent/<cIdDInf>/info', methods=['GET'])
 def get_dependents_info(cIdDInf):
     cursor = db.get_db().cursor()
@@ -288,7 +288,7 @@ def put_customers(userID):
     return "Success!"
 
 
-# Update Customer's Dependent Info from Edit form
+# Update A Dependent Info from Edit form
 @customers.route('/customers/dependent/<DepId>', methods=['PUT'])
 def put_customers_dependent(DepId):
     cursor = db.get_db().cursor()
@@ -306,7 +306,7 @@ def put_customers_dependent(DepId):
 
     return "Success!"
 
-# Purchasing ticket 
+# Purchasing ticket by setting a Ticket to a specific Customer
 @customers.route('/customers/<userID>/assign_ticket/<ticketID>', methods=['PUT'])
 def assign_ticket(userID, ticketID):
     cursor = db.get_db().cursor()

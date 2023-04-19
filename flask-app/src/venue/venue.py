@@ -4,6 +4,14 @@ from src import db
 
 venue = Blueprint('venue', __name__)
 
+'''
+
+-----------------------------------------
+
+All GET Routes for Venue Blueprint
+
+'''
+
 # Get all the tickets of the given venue
 @venue.route('/venues/<VenueID>/tickets', methods=['GET'])
 def get_tickets(VenueID):
@@ -131,6 +139,14 @@ def get_ticket(performanceID):
 
     return jsonify(json_data)
 
+'''
+
+-----------------------------------------
+
+All PUT Routes for Venue Blueprint
+
+'''
+
 # Update the Venue Info of the given Venue Owner
 @venue.route('/venues/<VenueID>', methods=['PUT'])
 def put_venues(VenueID):
@@ -148,6 +164,14 @@ def put_venues(VenueID):
     db.get_db().commit()
 
     return "Success!"
+
+'''
+
+-----------------------------------------
+
+All POST Routes for Venue Blueprint
+
+'''
 
 # Add a new venue for the given venue owner 
 @venue.route('/venues/<OwnerID>', methods=['POST'])
@@ -168,6 +192,14 @@ def add_venue(OwnerID):
     db.get_db().commit()
 
     return "Successfully added new Venue"
+
+'''
+
+-----------------------------------------
+
+All DELETE Routes for Venue Blueprint
+
+'''
 
 # This is to delete the venue by a venue owner
 @venue.route('/venues/<VenueID>', methods=['DELETE'])
