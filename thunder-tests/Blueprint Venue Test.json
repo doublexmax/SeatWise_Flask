@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Blueprint Venue Test",
-    "dateExported": "2023-04-18T23:24:11.844Z",
+    "dateExported": "2023-04-19T23:22:31.960Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -14,12 +14,12 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-04-18T22:40:42.870Z",
-            "modified": "2023-04-18T22:46:02.421Z",
+            "modified": "2023-04-19T23:19:32.441Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"NewVenueName\": \"Bayle\", \n  \"NewVenuePhone\": \"123-456-7890\",\n  \"NewVenueEmail\": \"bayle@gmail.com\",\n  \"NewVenueStreet\": \"361 Huntington Avenue\", \n  \"NewVenueCity\": \"Boston\",\n  \"NewVenueState\": \"MA\",\n  \"NewVenueZipcode\": \"02115\", \n  \"NewVenueCountry\": \"US\",\n  \"Venue_Owner\": 1\n}",
+                "raw": "{\n  \"NewVenueName\": \"Bayle\", \n  \"NewVenuePhone\": \"123-456-7890\",\n  \"NewVenueEmail\": \"bayle@gmail.com\",\n  \"NewVenueStreet\": \"361 Huntington Avenue\", \n  \"NewVenueCity\": \"Boston\",\n  \"NewVenueState\": \"MA\",\n  \"NewVenueZipcode\": \"02115\", \n  \"NewVenueCountry\": \"US\",\n  \"VenueOwnerSelect\": 1\n}",
                 "form": []
             },
             "tests": []
@@ -33,12 +33,12 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2023-04-18T22:46:17.481Z",
-            "modified": "2023-04-18T22:47:41.488Z",
+            "modified": "2023-04-19T23:19:44.733Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"NewVenueName\": \"Coogie\", \n  \"NewVenuePhone\": \"456-789-0123\",\n  \"NewVenueEmail\": \"coogie@gmail.com\",\n  \"NewVenueStreet\": \"716 Columbus Avenue\", \n  \"NewVenueCity\": \"Boston\",\n  \"NewVenueState\": \"MA\",\n  \"NewVenueZipcode\": \"02120\", \n  \"NewVenueCountry\": \"US\",\n  \"Venue_Owner\": 8\n}",
+                "raw": "{\n  \"NewVenueName\": \"Coogie\", \n  \"NewVenuePhone\": \"456-789-0123\",\n  \"NewVenueEmail\": \"coogie@gmail.com\",\n  \"NewVenueStreet\": \"716 Columbus Avenue\", \n  \"NewVenueCity\": \"Boston\",\n  \"NewVenueState\": \"MA\",\n  \"NewVenueZipcode\": \"02120\", \n  \"NewVenueCountry\": \"US\",\n  \"VenueOwnerSelect\": 8\n}",
                 "form": []
             },
             "tests": []
