@@ -289,8 +289,8 @@ def put_customers(userID):
 
 
 # Update Customer's Dependent Info from Edit form
-@customers.route('/customers/dependent/<userID>', methods=['PUT'])
-def put_customers_dependent(userID):
+@customers.route('/customers/dependent/<DepId>', methods=['PUT'])
+def put_customers_dependent(DepId):
     cursor = db.get_db().cursor()
 
     d_info = request.json
@@ -298,14 +298,15 @@ def put_customers_dependent(userID):
     query = f"UPDATE Dependent SET FirstName = '{d_info.get('DepFirstName')}', LastName = '{d_info.get('DepLastName')}', \
     PhoneNumber = '{d_info.get('DepPhoneCopy')}', Relationship = '{d_info.get('Relationship')}', \
     Street = '{d_info.get('DepStreet')}', City = '{d_info.get('DepCity')}', State = '{d_info.get('DepState')}', \
-    Zipcode = '{d_info.get('DepZipcode')}', Country = '{d_info.get('DepCountry')}' WHERE Parent = %s"
+    Zipcode = '{d_info.get('DepZipcode')}', Country = '{d_info.get('DepCountry')}' WHERE DependentID = %s"
 
-    cursor.execute(query, (userID,))
+    cursor.execute(query, (DepId,))
 
     db.get_db().commit()
 
     return "Success!"
 
+# Purchasing ticket 
 @customers.route('/customers/<userID>/assign_ticket/<ticketID>', methods=['PUT'])
 def assign_ticket(userID, ticketID):
     cursor = db.get_db().cursor()
