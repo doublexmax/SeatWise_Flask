@@ -132,8 +132,8 @@ def get_ticket(performanceID):
     return jsonify(json_data)
 
 # Update the Venue Info of the given Venue Owner
-@venue.route('/venues/<OwnerID>', methods=['PUT'])
-def put_venues(OwnerID):
+@venue.route('/venues/<VenueID>', methods=['PUT'])
+def put_venues(VenueID):
     cursor = db.get_db().cursor()
 
     v_info = request.json
@@ -141,9 +141,9 @@ def put_venues(OwnerID):
     query = f"UPDATE Venues SET Email = '{v_info.get('EditVenueEmail')}', PhoneNumber = '{v_info.get('EditVenuePhone')}', \
     Street = '{v_info.get('EditVenueStreet')}', City = '{v_info.get('EditVenueCity')}', \
     State = '{v_info.get('EditVenueState')}', Zipcode = '{v_info.get('EditVenueZipcode')}', \
-    Country = '{v_info.get('EditVenueCountry')}' WHERE OwnerID = %s"
+    Country = '{v_info.get('EditVenueCountry')}' WHERE VenueID = %s"
 
-    cursor.execute(query, (OwnerID,))
+    cursor.execute(query, (VenueID,))
 
     db.get_db().commit()
 
