@@ -32,9 +32,23 @@ Finally, the application registers all the imported routes with their correspond
 In the provided code, four blueprints are registered with the application object:
 
 1. **customers:** This blueprint handles routes related to customers, which are prefixed with `/c.`
+    Here are some of the actions that can be performed:
+        1. `GET /customers:` Retrieve a list of all customers in the database.
+        2. `GET /customers/names:` Retrieve a list of customer names and IDs that can be used for a form.
+        3. `GET /customers/<userID>:` Retrieve details about a specific customer identified by their ID.
+        4. `GET /customers/<userID>/tickets:` Retrieve a list of tickets purchased by a specific customer identified by their ID.
+        5. `GET /customers/<userID>/dependents:` Retrieve a list of dependents associated with a specific customer identified by their ID.
+        6. `GET /customers/<cIDInf>/info:` Retrieve customer information for a specific customer identified by their ID for an edit form.
+        7. `GET /customers/fanof: `Retrieve a list of artists that a customer can select as their favorite.
+        8. `GET /customers/dependent/<cIdDInf>/info:` Retrieve dependent information for a specific dependent identified by their ID for an edit form
+        9. `PUT /customer/<customer_id>:` Updating a customer 
+        10. `POST /customer`: creating a new customer 
+        11. `DELETE /customer/<customer_id>:` Deleteing customer 
 
 2. **tickets**: This blueprint handles routes related to tickets, which are prefixed with `/t.`
-
+    Here are some of the actions that can be performed:
+            1. `GET /customers:` Retrieve a list of all customers in the database.
+            2. 
 3. **venue_owner**: This blueprint handles routes related to venue owners, which are prefixed with `/vo.`
 
 4. **venue:** This blueprint handles routes related to venues, which are prefixed with `/v.`
