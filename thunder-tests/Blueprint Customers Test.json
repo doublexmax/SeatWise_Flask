@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Blueprint Customers Test",
-    "dateExported": "2023-04-18T22:52:45.443Z",
+    "dateExported": "2023-04-19T23:06:50.105Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -108,11 +108,11 @@
             "colId": "e2ff6fd7-f5f0-4c15-8cdb-281b9f04385c",
             "containerId": "",
             "name": "GetCustomerTicket-Test1",
-            "url": "localhost:8001/c/customers/1/tickets",
+            "url": "localhost:8001/c/customers/4/tickets",
             "method": "GET",
             "sortNum": 70000,
             "created": "2023-04-18T21:40:03.283Z",
-            "modified": "2023-04-18T21:40:18.236Z",
+            "modified": "2023-04-19T23:04:08.025Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -514,6 +514,25 @@
             "body": {
                 "type": "json",
                 "raw": "{\n  \"FirstName\": \"unavailable\",\n  \"LastName\": \"unavailable\",\n  \"PhoneNumber\": \"NULL\",\n  \"Email\": \"NULL\", \n  \"Street\": \"NULL\",\n  \"City\": \"NULL\", \n  \"State\": \"NULL\",\n  \"Zipcode\": \"NULL\", \n  \"Country\": \"NULL\", \n  \"Relationship\": \"unavailable\"\n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "dbaa99ae-4e1f-44ab-a372-dcb99da72f43",
+            "colId": "e2ff6fd7-f5f0-4c15-8cdb-281b9f04385c",
+            "containerId": "",
+            "name": "PostAddCustomer",
+            "url": "localhost:8001/c/customers",
+            "method": "POST",
+            "sortNum": 220000,
+            "created": "2023-04-19T23:03:04.445Z",
+            "modified": "2023-04-19T23:05:57.623Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"CusFirstName\": \"New\",\n  \"CusLastName\": \"User\",\n  \"CusPhone\": \"251-985-0271\",\n  \"CusEmail\": \"ahdsh@gmail.com\",\n  \"CusDOB\": \"1998-04-07\",\n  \"CusStreet\": \"300 University Ave\",\n  \"CustCity\": \"Palo Alto\",\n  \"CustState\": \"CA\",\n  \"CustZipcode\": \"940301\",\n  \"CustCountry\": \"USA\"\n  \n  \n  \n}",
                 "form": []
             },
             "tests": []
