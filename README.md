@@ -32,6 +32,7 @@ Finally, the application registers all the imported routes with their correspond
 In the provided code, four blueprints are registered with the application object:
 
 1. **customers:** This blueprint handles routes related to customers, which are prefixed with `/c.`
+    
     Here are some of the actions that can be performed:
         1. `GET /customers:` Retrieve a list of all customers in the database.
         2. `GET /customers/names:` Retrieve a list of customer names and IDs that can be used for a form.
@@ -46,12 +47,35 @@ In the provided code, four blueprints are registered with the application object
         11. `DELETE /customer/<customer_id>:` Deleteing customer 
 
 2. **tickets**: This blueprint handles routes related to tickets, which are prefixed with `/t.`
+    
     Here are some of the actions that can be performed:
-            1. `GET /customers:` Retrieve a list of all customers in the database.
-            2. 
+            1. `GET /tickets/:` Returns a list of all the tickets in the database.
+            2. `GET /tickets/<ticketID>`: Returns the ticket with the specified ticketID.
+
 3. **venue_owner**: This blueprint handles routes related to venue owners, which are prefixed with `/vo.`
+   
+    Here are some of the actions that can be performed:
+            1. `GET /venues:` Retrieve a list of all venues in the database.
+            2. `GET /venues/names:` Retrieve a list of venue names and IDs that can be used for a form.
+            3. `GET /venues/<venueID>:` Retrieve details about a specific venue identified by its ID.
+            4. `GET /venues/<venueID>/events:` Retrieve a list of events hosted by a specific venue identified by its ID.
+            5. `GET /venues/<venueID>/available_dates:` Retrieve a list of available dates for a specific venue identified by its ID.
+            6. `GET /venues/<vIDInf>/info:` Retrieve venue information for a specific venue identified by its ID for an edit form.
+            7. `PUT /venues/<venueID>`: Updating a venue.
+            8. `POST /venues:` creating a new venue.
+            9. `DELETE /venues/<venueID>:` Deleting a venue.
 
 4. **venue:** This blueprint handles routes related to venues, which are prefixed with `/v.`
 
+    Here are some of the actions that can be performed:
+        1. `GET /venues:` Retrieve a list of all venues in the database.
+        2. `GET /venues/names:` Retrieve a list of venue names and IDs that can be used for a form.
+        3. `GET /venues/<venueID>:` Retrieve details about a specific venue identified by its ID.
+        4. `GET /venues/<venueID>/events:` Retrieve a list of events hosted by a specific venue identified by its ID.
+        5. `GET /venues/<venueID>/available_dates:` Retrieve a list of available dates for a specific venue identified by its ID.
+        6. `GET /venues/<vIDInf>/info:` Retrieve venue information for a specific venue identified by its ID for an edit form.
+        7. `PUT /venues/<venueID>:` Updating a venue.
+        8. `POST /venues:` creating a new venue.
+        9. `DELETE /venues/<venueID>:` Deleting a venue.
 
 You can now run the application on Appsmith by going to http://localhost:8080/ and deploying the latest version. 
