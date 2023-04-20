@@ -86,4 +86,4 @@ Finally, the application registers all the imported routes with their correspond
 
 You can now run the application on Appsmith by going to http://localhost:8080/ and deploying the latest version. 
 
-<ul> Link To Video Demonstration: </ul> <a href="https://northeastern.zoom.us/rec/play/5Kv9nlv8rypzBqHVRW2vYOSnwuXV6L1FyU2YFOzm-XSTaxEAZWEioQBdiFRfDXLaE6wMPl14WO4GZCNZ.klZxLDk9DZ-XOO0v?canPlayFromShare=true&from=share_recording_detail&continueMode=true&componentName=rec-play&originRequestUrl=https%3A%2F%2Fnortheastern.zoom.us%2Frec%2Fshare%2F7zzjROW4j1u3ocCzYFgG9uqQy1pHCBOvM-YV-rINzorqxitRIs3dzXq1TmWSv_d7.3cwp1Gu_j-Jx6uML" />
+<ul> <a href="https://northeastern.zoom.us/rec/play/5Kv9nlv8rypzBqHVRW2vYOSnwuXV6L1FyU2YFOzm-XSTaxEAZWEioQBdiFRfDXLaE6wMPl14WO4GZCNZ.klZxLDk9DZ-XOO0v?canPlayFromShare=true&from=share_recording_detail&continueMode=true&componentName=rec-play&originRequestUrl=https%3A%2F%2Fnortheastern.zoom.us%2Frec%2Fshare%2F7zzjROW4j1u3ocCzYFgG9uqQy1pHCBOvM-YV-rINzorqxitRIs3dzXq1TmWSv_d7.3cwp1Gu_j-Jx6uML" /> Link To Video Demonstration: </ul>
